@@ -171,6 +171,8 @@ contains
     !---------------------------------------------------------------------------
 
     ! the random number pool, size of the pool
+    !TODO: 在需要的时候生成，十最好的方式。但如何解决这样的生成，是否仍满足需要的分布，
+    ! 仍未解决
     call GenRands_()
 
   end subroutine hfy_srr_ini
