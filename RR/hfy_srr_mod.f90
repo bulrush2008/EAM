@@ -152,6 +152,7 @@ contains
 
     ipass = ipass + 1
 
+    ! 初始化，仅调用一次
     if( ipass >= 2 ) return
     !---------------------------------------------------------------------------
 
@@ -165,7 +166,7 @@ contains
     ! read in parameters set by user
     call hfy_srr_in()
 
-    ! check and nomalized \vec n_ref, i.e. dire_nozz_srr if needed
+    ! check and nomalize \vec n_ref, i.e. dire_nozz_srr if needed
     call checkNoz_()
     !---------------------------------------------------------------------------
 
