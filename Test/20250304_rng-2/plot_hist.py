@@ -3,11 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def plot_hist():
-  data = np.loadtxt("ufdata1.csv")
+  data1 = np.loadtxt("ufdata1.csv")
+  data2 = np.loadtxt("ufdata2.csv")
 
-  fig, ax = plt.subplots(1,1)
+  fig, (ax1, ax2) = plt.subplots(1,2)
 
-  ax.hist(data, bins=30, histtype="step", density=True)
+  ax1.hist(data1, bins=30, histtype="step", density=True)
+  ax2.hist(data2, bins=30, histtype="step", density=True, log=True)
 
   fig.savefig("hist.png")
   pass
