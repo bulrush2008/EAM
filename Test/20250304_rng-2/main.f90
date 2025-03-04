@@ -16,7 +16,7 @@ module rng_mod
 
   integer(8), parameter :: LCG_MULT = 6364136223846793005_8
   integer(8), parameter :: LCG_INCR = 1442695040888963407_8
-  integer(8), parameter :: MODULUS = 9223372036854775807_8  ! 2^63
+  integer(8), parameter :: MODULUS = 9223372036854775807_8  ! 2^63-1
 
 contains
 
