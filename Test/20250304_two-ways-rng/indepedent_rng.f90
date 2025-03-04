@@ -21,10 +21,12 @@ contains
   subroutine rng_init(this, seed)
     class(IndependentRNG), intent(inout) :: this
     integer(8), intent(in) :: seed
+    real(8) :: t1, t2
+
     this%state = seed
     ! 预热生成器（避免初始相关性）
-    call this%uniform()
-    call this%uniform()
+    t1 = this%uniform()
+    t2 = this%uniform()
   end subroutine
 
   ! 生成[0,1)均匀分布（LCG算法）
@@ -32,7 +34,7 @@ contains
     class(IndependentRNG), intent(inout) :: this
     integer(8), parameter :: a = 6364136223846793005_8
     integer(8), parameter :: c = 1442695040888963407_8
-    integer(8), parameter :: m = 9223372036854775808_8  ! 2^63
+    integer(8), parameter :: m = 4223372036854775808_8  ! 2^63
     this%state = mod(a * this%state + c, m)
     u = real(this%state, kind=4) / real(m, kind=4)
   end function
