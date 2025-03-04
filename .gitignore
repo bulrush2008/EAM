@@ -1,3 +1,5 @@
-Test/*/*.mod
 Test/*/*.o
+Test/*/*.mod
 Test/*/*.exe
+Test/*/*.png
+Test/*/*.csv
