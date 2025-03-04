@@ -12,6 +12,7 @@ module rng_mod
   contains
     procedure :: init => seed_rng
     procedure :: normal => rng_normal
+    procedure :: uniform => rng_uniform
   end type RNG
 
   integer(8), parameter :: LCG_MULT = 6364136223846793005_8
@@ -35,6 +36,7 @@ contains
     ! 更新状态并生成均匀分布随机数
     next_state = mod(LCG_MULT * this%state + LCG_INCR, MODULUS)
     u = real(next_state) / real(MODULUS)  ! [0,1) 范围
+    u = abs(u)
     this%state = next_state
   end function rng_uniform
 

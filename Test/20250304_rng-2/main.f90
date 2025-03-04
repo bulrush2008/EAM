@@ -4,7 +4,7 @@ program demo
   use rng_mod
   implicit none
   type(RNG) :: task1, task2
-  integer, parameter :: N = 10000
+  integer, parameter :: N = 200000
   real :: x, sum1, sum2, sum_sq1, sum_sq2
   integer :: i
 
@@ -15,7 +15,10 @@ program demo
   ! Test task1
   sum1 = 0.0; sum_sq1 = 0.0
   do i = 1, N
-    x = task1%normal()
+    !x = task1%normal() ! 高斯分布
+    x = task1%uniform()
+    ! debug
+    !print *, "for uniform dist: x = ", x
     sum1 = sum1 + x
     sum_sq1 = sum_sq1 + x**2
   end do
