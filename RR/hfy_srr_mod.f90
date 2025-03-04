@@ -281,6 +281,7 @@ contains
         iptr = rands%irand_
         rand = rands%rands_(iptr)
 
+        ! rand 是 [0,1) 的随机数，这个范围是否有问题？
         theParc%diam_ &
         = tdmean * ((tdmin / tdmean)**tq - log(ONE - k_temp*rand))**(ONE/tq)
 
