@@ -27,6 +27,17 @@ contains
     this%has_spare = .false.
   end subroutine seed_rng
 
+  function rng_uniform(this) result(u)
+    class(RNG), intent(inout) :: this
+    real :: u
+    integer(8) :: next_state
+    
+    ! 更新状态并生成均匀分布随机数
+    next_state = mod(LCG_MULT * this%state + LCG_INCR, MODULUS)
+    u = real(next_state) / real(MODULUS)  ! [0,1) 范围
+    this%state = next_state
+  end function rng_uniform
+
   function rng_normal(this) result(n)
     class(RNG), intent(inout) :: this
     real :: n
@@ -61,7 +72,7 @@ program demo
   use rng_mod
   implicit none
   type(RNG) :: task1, task2
-  integer, parameter :: N = 100000
+  integer, parameter :: N = 10000
   real :: x, sum1, sum2, sum_sq1, sum_sq2
   integer :: i
 
